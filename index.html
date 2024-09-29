@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Photographer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #85929e;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+            color: #e5e8e8;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Header Section */
+        header {
+            background-image: url('https://images.unsplash.com/photo-1648342917208-17d1c942445d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add your image path */
+            background-size: cover;  /* Full screen image */
+            background-position: center;
+            background-repeat: no-repeat;  /* Avoid repeating the image */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Cream-colored overlay for the rest of the header content */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Optional overlay if needed */
+            /* background-color: rgba(255, 255, 255, 0.5); */
+        }
+
+        header h1 {
+            font-size: 4rem;
+            z-index: 1;
+            position: relative;
+            font-family: 'Dancing Script', cursive; /* Cursive font */
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+            background-color: #2e4053; /* Default button color */
+            color: #fff;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #53af13; /* Hover color */
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #53af13;
+        }
+
+        section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #2e4053;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: #b2babb;
+        }
+
+        #gallery h2 {
+            margin-bottom: 30px;
+        }
+
+        .gallery-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-container img {
+            width: 25%;
+            min-width: 200px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Animation */
+        @keyframes scroll-right {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .gallery-scroll-right {
+            animation: scroll-right 20s linear infinite;
+        }
+
+        .gallery-scroll-left {
+            animation: scroll-left 20s linear infinite;
+        }
+
+        /* Pricing Section */
+        #pricing {
+            background-color: #34495e;
+        }
+
+        .pricing-card {
+            display: inline-block;
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #e5e8e8;
+            border-radius: 15px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card h3 {
+            color: #f1c40f;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #3c3c3c;
+			text-align: center;
+            color: #fff;
+        }
+
+        #contact h2 {
+            color: #e74c3c;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+		
+		/* Additional Styles for Contact Section */
+        #contact .contact-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px; /* Adjust this height as needed */
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .gallery-container img {
+                width: 80%;
+                max-width: 100%;
+            }
+
+            .pricing-card {
+                width: 90%;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+
+            .nav-buttons {
+                top: 10px;
+                right: 10px;
+                gap: 10px;
+            }
+
+            .nav-buttons a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-container {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>We Capture All the Feels</h1>
+        <div class="nav-buttons">
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Karthik K, a passionate wedding photographer who specializes in capturing the most beautiful and emotional moments of your big day. My goal is to tell your love story through candid and timeless photos.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container gallery-scroll-right">
+            <img src="https://images.unsplash.com/photo-1607357910286-1ff94ac13c24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww" alt="Gallery Image 1">
+            <img src="https://images.unsplash.com/photo-1676299087754-e2d49662719f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww" alt="Gallery Image 2">
+            <img src="https://images.unsplash.com/photo-1726694064556-c9565e8e81c9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww" alt="Gallery Image 3">
+			<img src="https://images.unsplash.com/photo-1716671761009-42aacafe8263?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww" alt="Gallery Image 4">
+			<img src="https://images.unsplash.com/photo-1676751319212-a2bdd25395c3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww" alt="Gallery Image 5">
+			<img src="https://images.unsplash.com/photo-1683238066302-3dde1106d315?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fHdlZGRpbmclMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww" alt="Gallery Image 6">
+
+            <!-- Add more images as needed -->
+        </div>
+        <div class="gallery-container gallery-scroll-left">
+            <img src="https://images.unsplash.com/photo-1572086175201-6d716891e2c9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D" alt="Gallery Image 7">
+            <img src="https://plus.unsplash.com/premium_photo-1675003663548-2fabf9b5452b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery Image 8">
+            <img src="https://images.unsplash.com/photo-1600164913117-2125c1f60b01?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery Image 9">
+			<img src="https://plus.unsplash.com/premium_photo-1664790559993-d81f1d43d2fe?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery Image 10">
+			<img src="https://images.unsplash.com/photo-1669258001963-f8b0d3cd3598?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery Image 11">
+			<img src="https://images.unsplash.com/photo-1712948222262-eedf44738305?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery Image 12">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <div class="pricing-card">
+            <h3>Basic Package</h3>
+            <p>4 hours coverage : Rs/- 5000</p>
+        </div>
+        <div class="pricing-card">
+            <h3>Premium Package</h3>
+            <p>8 hours coverage : Rs/- 10000</p>
+        </div>
+        <div class="pricing-card">
+            <h3>Ultimate Package</h3>
+            <p>Full day coverage : Rs/- 25000</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p>Email: karthik.k@gmail.com</p>
+            <p>Phone: +91 9002344243</p>
+            <p>Location: Attapur, Hyderabad</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Wedding Photography by Karthik K. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
